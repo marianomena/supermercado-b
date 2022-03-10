@@ -20,6 +20,7 @@ var stp = require('./config/setup');
 
 // Controladores del sistema
 var index = require('./routes/index');
+var scope = require('./routes/rest/scope');
 var auth = require('./routes/rest/auth');
 var users = require('./routes/rest/users');
 var productos = require('./routes/rest/productos');
@@ -39,6 +40,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(session({	secret: SECRET_WORD ,	resave: false,	saveUninitialized: true }));
+app.use(cors());
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
@@ -49,6 +51,8 @@ app.use('/', index);
 app.use('/rest/users', users);
 app.use('/rest/auth', auth);
 app.use('/rest/products', productos);
+app.use('/rest/scope', scope);
+app.use('/rest/scope2', scope);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
