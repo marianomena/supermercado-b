@@ -11,12 +11,18 @@
  var debug = require('debug')('test:server');
  var logger = require('morgan');
  var compression = require('compression');
-
+ var cors = require('cors');
 
 // =========================== Dependencies de la app ===========================
  
+// Configuración del sistema
+var stp = require('./config/setup');
+
 // Controladores del sistema
 var index = require('./routes/index');
+var auth = require('./routes/rest/auth');
+var users = require('./routes/rest/users');
+var productos = require('./routes/rest/productos');
 
 const SECRET_WORD = process.env.SECRET_WORD || 'frontera_de_menelaus';
 
@@ -40,7 +46,9 @@ app.set('port', port);
 
 // =============== Rutas del servidor ===============
 app.use('/', index);
-
+app.use('/rest/users', users);
+app.use('/rest/auth', auth);
+app.use('/rest/products', productos);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
