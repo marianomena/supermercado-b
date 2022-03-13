@@ -1,6 +1,6 @@
 Trabajo Parcial API con Node, Mongo DB y Express, Abre, Pignatelli, Mena
 Pasos para ejecucion
-1- npm install 2- npm start 3- en navegador, probar en el http://localhost:5000
+1- npm install 2- npm start 3- en navegador, probar en el http://localhost:3000
 
 Integrantes del equipo
 Abre, Marcos Julian Pignatelli, Ulises Mena, Mariano
