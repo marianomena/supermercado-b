@@ -22,7 +22,7 @@
         var nivelAccess = intNivel || 0;
 
         // Nivel de acceso requerido por el recurso.
-        var secretWord = process.env.SECRET_WORD || ''
+        var secretWord = process.env.SECRET_WORD || 'Lapostal256'
 
         // Valida palabra secreta ( presente en la variable de entorno ).
         if(secretWord=='') return res.status(500).json({estado:false, message: 'Error de configuración en el servidor.'});

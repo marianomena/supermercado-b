@@ -29,7 +29,7 @@ router.post('/', async function(req, res, next) {
 
   // Crear sesión
   let session = await crearSesion(user, req, res);
-  console.log(session)
+  console.log(user)
 
   if( !session ) return res.status(500).json({ status:false, message:'Error iniciando sesión.'});
 
@@ -140,7 +140,7 @@ function crearSesion(user, req, res){
       // Crea session 
       // IP del ordenador del cliente
       var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
-      
+
       // Configuración del payload;
       var duracion= Stp.timeSession;// Minutos de vida del token
       var expira = Date.now() + ( duracion * 60 * 1000 )
@@ -151,7 +151,8 @@ function crearSesion(user, req, res){
                     }
       
       // Genera el token
-      let secretWord = process.env.SECRET_WORD || '';
+      let secretWord = process.env.SECRET_WORD || 'Lapostal256';
+      console.log(secretWord);
 
       if(secretWord == '')  return resolve(false);
 
